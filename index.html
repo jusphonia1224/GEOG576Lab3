@@ -107,36 +107,36 @@
 
         //setting up the icon
         const airportRenderer = {
-        "type": "simple",
-        "symbol": {
-          "type": "picture-marker",
-          "url": "https://jusphonia1224.github.io/GEOG576Lab3/outline_local_airport_black_24dp.png",
-          "width": "18px",
-          "height": "18px"
-        }
-      }
-
-      //const to make the airport labels
-
-      const airportLabels = {
-        symbol: {
-          type: "text",
-          color: "#FFFFFF",
-          haloColor: "#5E8D74",
-          haloSize: "2px",
-          font: {
-            size: "12px",
-            family: "Noto Sans",
-            style: "italic",
-            weight: "normal"
+          "type": "simple",
+          "symbol": {
+            "type": "picture-marker",
+            "url": "https://jusphonia1224.github.io/GEOG576Lab3/outline_local_airport_black_24dp.png",
+            "width": "18px",
+            "height": "18px"
           }
-        },
-
-        labelPlacement: "above-center",
-        labelExpressionInfo: {
-          expression: "$feature.Fac_Name"
         }
-      };
+
+        //const to make the airport labels
+
+        const airportLabels = {
+          symbol: {
+            type: "text",
+            color: "#FFFFFF",
+            haloColor: "#5E8D74",
+            haloSize: "2px",
+            font: {
+              size: "12px",
+              family: "Noto Sans",
+              style: "italic",
+              weight: "normal"
+            }
+          },
+
+          labelPlacement: "above-center",
+          labelExpressionInfo: {
+            expression: "$feature.Fac_Name"
+          }
+        };
 
         const airportLayer = new FeatureLayer({
           url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports/FeatureServer",
@@ -152,12 +152,24 @@
         //adding the feature layer to the map
         map.add(airportLayer);
 
+        //setting up the icon
+        const favAirportRenderer = {
+          "type": "simple",
+          "symbol": {
+            "type": "picture-marker",
+            "url": "https://jusphonia1224.github.io/GEOG576Lab3/airport-location-4359.png",
+            "width": "18px",
+            "height": "18px"
+          }
+        }
+
         //adding the const for the feature layer
         const myAirports = new FeatureLayer({
-        url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_airports_lab3/FeatureServer",
-        
-        //adding the popup here
-        outFields: ["AirportCode"],
+          url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_airports_lab3/FeatureServer",
+          renderer: favAirportRenderer,  //calling the icon
+          //adding the popup here
+          outFields: ["AirportCode"]
+
 
         });
 
