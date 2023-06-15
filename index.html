@@ -181,6 +181,12 @@
 
         // Set the point layer's LayerInfo
         const pointInfos = {
+          layer: myAirports
+        }
+
+
+        // Set the label style for point layer's LayerInfo
+        const pointInfosLabels = {
           layer: myAirports,
           symbol: {
             type: "text",
@@ -204,7 +210,8 @@
         // Begin Editor constructor
         const editor = new Editor({
           view: view,
-          layerInfos: [pointInfos]
+          layerInfos: [pointInfos],          
+          labelingInfo: [pointInfosLabels] //adding the labels 
         }); // End Editor constructor
 
         // Add the widget to the view
