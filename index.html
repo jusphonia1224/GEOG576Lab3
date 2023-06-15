@@ -156,7 +156,7 @@
         map.add(airportLayer);
 
         //setting up the icon
-        const favAirportRenderer = {
+        const myAirportRenderer = {
           "type": "simple",
           "symbol": {
             "type": "picture-marker",
@@ -191,7 +191,7 @@
         //adding the const for the feature layer
         const myAirports = new FeatureLayer({
           url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_airports_lab3/FeatureServer",
-          renderer: favAirportRenderer,  //calling the icon
+          renderer: myAirportRenderer,  //calling the icon
           //adding the popup here
           outFields: ["AirportCode"],          
           labelingInfo: [pointInfosLabels] //adding the labels 
