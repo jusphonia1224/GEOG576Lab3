@@ -166,24 +166,6 @@
           }
         }
 
-        //adding the const for the feature layer
-        const myAirports = new FeatureLayer({
-          url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_airports_lab3/FeatureServer",
-          renderer: favAirportRenderer,  //calling the icon
-          //adding the popup here
-          outFields: ["AirportCode"]
-
-
-        });
-
-        //adding the feature layer to the map
-        map.add(myAirports);
-
-        // Set the point layer's LayerInfo
-        const pointInfos = {
-          layer: myAirports
-        }
-
 
         // Set the label style for point layer's LayerInfo
         const pointInfosLabels = {
@@ -206,11 +188,27 @@
           }
         }
 
+        //adding the const for the feature layer
+        const myAirports = new FeatureLayer({
+          url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_airports_lab3/FeatureServer",
+          renderer: favAirportRenderer,  //calling the icon
+          //adding the popup here
+          outFields: ["AirportCode"],          
+          labelingInfo: [pointInfosLabels] //adding the labels 
+        });
+
+        //adding the feature layer to the map
+        map.add(myAirports);
+
+        // Set the point layer's LayerInfo
+        const pointInfos = {
+          layer: myAirports
+        }
+
         // Begin Editor constructor
         const editor = new Editor({
           view: view,
-          layerInfos: [pointInfos],          
-          labelingInfo: [pointInfosLabels] //adding the labels 
+          layerInfos: [pointInfos]
         }); // End Editor constructor
 
         // Add the widget to the view
